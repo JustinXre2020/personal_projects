@@ -1,5 +1,3 @@
-from CSE8AImage import *
-
 def check_validity(image, col_index, row_index, region_height, region_width):
     if col_index < 0 or row_index < 0 or region_height < 0 or region_width < 0:
         return False 
@@ -11,7 +9,6 @@ def check_validity(image, col_index, row_index, region_height, region_width):
 
 
 def flip_vertical(image, col_index, row_index, region_height, region_width):
-    # Check validity of input parameters
     if not check_validity(image, col_index, row_index, region_height, region_width):
         return False
     else:
@@ -20,10 +17,5 @@ def flip_vertical(image, col_index, row_index, region_height, region_width):
                 temp = image[row][column] 
                 image[row][column] = image[2*row_index + region_height - row - 1][column]
                 image[2*row_index + region_height - row - 1][column] = temp        
-    
-    # Return True if successfully flipped the image 
-    return True
 
-image = load_img('input.png')
-flip_vertical(image, 0, 0,200, 200)
-save_img(image, 'fliped.png')
+    return True
