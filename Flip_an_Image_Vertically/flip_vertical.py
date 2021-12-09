@@ -39,6 +39,6 @@ def flip_vertical(image, col_index, row_index, region_height, region_width):
                 image[2*row_index + region_height - row - 1][column] = temp        
     
 
-image = convert('person image name')
+image = convert('input image name')
 flip_vertical(image, 0, 0, 200, 200)
 save(image, 'output_file.png')
