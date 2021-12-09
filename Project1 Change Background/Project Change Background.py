@@ -1,17 +1,13 @@
 import numpy as np
 from PIL import Image
 
-def load_img(filename):
+def convert(filename):
     img = Image.open(filename)
     pil_img = img.convert('RGB')
     arr = np.array(pil_img.getdata(), dtype=np.uint8).reshape(pil_img.height, pil_img
 .width, 3)
     return [ [ (int(p[0]),int(p[1]),int(p[2])) for p in row ] for row in arr ]
 
-def save_img(img, filename):
-    arr = np.asarray(img, dtype=np.uint8)
-    pil_img = Image.fromarray(arr)
-    pil_img.save(filename, format='png')
 
 # Only accept the condition that the size of person image is smaller than the background image
 # in both height and width
@@ -28,6 +24,7 @@ def change_background(img, new_background, replace_color):
 				color_distance(img[i][j], new_background[i][j]) - threshold < -30:
 					img[i][j] = new_background[i][j]
 	return save_img(img, 'name of destination png file')
+
 
 def color_distance(color1, color2):
 	r1, g1, b1 = color1
