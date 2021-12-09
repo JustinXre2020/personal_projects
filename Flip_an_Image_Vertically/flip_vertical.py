@@ -1,8 +1,17 @@
+import numpy as np
+from PIL import Image
+
 def convert(filename):
     img = Image.open(filename)
     pil_img = img.convert('RGB')
-    arr = np.array(pil_img.getdata(), dtype=np.uint8).reshape(pil_img.height, pil_img.width, 3)
-    return [ [ (int(p[0]),int(p[1]),int(p[2])) for p in row ] for row in arr ]
+    arr_img = np.array(pil_img.getdata(), dtype=np.uint8).reshape(pil_img.height, pil_img.width, 3)
+    l = []
+    for row in arr_img:
+        col = []
+        for pixel in row:
+            col.append((int(pixel[0]),int(pixel[1]),int(pixel[2]))
+        l.append(col)
+    return l
 
 def save(img, filename):
     arr = np.asarray(img, dtype=np.uint8)
