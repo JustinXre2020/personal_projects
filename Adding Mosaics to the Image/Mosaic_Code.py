@@ -18,7 +18,7 @@ def save(img, filename):
     pil_img = Image.fromarray(arr)
     pil_img.save(filename, format='png')
 
-def pixelization(image, length, percentage_change):
+def mosaic(image, length, percentage_change):
     for i in range(0, len(image), length):
         for j in range(len(image[0]) - 1, int((1 - percentage_change*0.01)*len(image[0])), -length):
             r = 0
@@ -38,7 +38,7 @@ def pixelization(image, length, percentage_change):
                     
                     
 image = convert('input image name')
-pixelization(image, 10, 60)
+mosaic(image, 10, 60)
 save(image, 'output_file.png')
 
 
