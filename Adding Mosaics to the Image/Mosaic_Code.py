@@ -40,5 +40,3 @@ def mosaic(image, length, percentage_change):
 image = convert('input image name')
 mosaic(image, 10, 60)
 save(image, 'output_file.png')
-
-
