@@ -37,7 +37,7 @@ def pixelization(image, length, percentage_change):
                     image[ii][jj] = (int(new_r), int(new_g), int(new_b))
                     
                     
-image = convert('person image name')
+image = convert('input image name')
 pixelization(image, 10, 60)
 save(image, 'output_file.png')
 
