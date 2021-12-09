@@ -15,5 +15,6 @@ def pixelization(image, length, percentage_change):
             for ii in range(i, i + length):
                 for jj in range(j, j - length, -1):
                     image[ii][jj] = (int(new_r), int(new_g), int(new_b))
+    return image
 
 
