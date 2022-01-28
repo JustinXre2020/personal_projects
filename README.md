@@ -1,2 +1,2 @@
-# personal_projects
-Config files for my GitHub profile.
+# This is my personal projects
+
