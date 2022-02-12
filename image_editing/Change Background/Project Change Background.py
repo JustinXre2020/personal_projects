@@ -13,7 +13,7 @@ def convert(filename):
         l.append(col)
     return l
 
-def save_img(img, filename):
+def save(img, filename):
     arr = np.asarray(img, dtype=np.uint8)
     pil_img = Image.fromarray(arr)
     pil_img.save(filename, format='png')
@@ -32,7 +32,7 @@ def change_background(img, new_background, replace_color):
 				if color_distance(img[i][j], new_background[i][j]) - threshold > -180 and \
 				color_distance(img[i][j], new_background[i][j]) - threshold < -30:
 					img[i][j] = new_background[i][j]
-	return save_img(img, 'name of destination png file')
+	return save(img, 'name of destination png file')
 
 def color_distance(color1, color2):
 	r1, g1, b1 = color1
@@ -40,5 +40,5 @@ def color_distance(color1, color2):
 	return ((r1 - r2)**2 + (g1 - g2)**2 + (b1 - b2)**2)**0.5
 
 image = convert('person image name')
-new_background = load_img('background image name')
+new_background = convert('background image name')
 change_background(image, new_background, (0, 255, 0))
