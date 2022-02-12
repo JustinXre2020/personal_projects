@@ -1,12 +1,17 @@
 import numpy as np
 from PIL import Image
 
-def load_img(filename):
+def convert(filename):
     img = Image.open(filename)
     pil_img = img.convert('RGB')
-    arr = np.array(pil_img.getdata(), dtype=np.uint8).reshape(pil_img.height, pil_img
-.width, 3)
-    return [ [ (int(p[0]),int(p[1]),int(p[2])) for p in row ] for row in arr ]
+    arr_img = np.array(pil_img.getdata(), dtype=np.uint8).reshape(pil_img.height, pil_img.width, 3)
+    l = []
+    for row in arr_img:
+        col = []
+        for pixel in row:
+            col.append((int(pixel[0]),int(pixel[1]),int(pixel[2]))
+        l.append(col)
+    return l
 
 def save_img(img, filename):
     arr = np.asarray(img, dtype=np.uint8)
@@ -34,6 +39,6 @@ def color_distance(color1, color2):
 	r2, g2, b2 = color2
 	return ((r1 - r2)**2 + (g1 - g2)**2 + (b1 - b2)**2)**0.5
 
-image = load_img('person image name')
+image = convert('person image name')
 new_background = load_img('background image name')
 change_background(image, new_background, (0, 255, 0))
