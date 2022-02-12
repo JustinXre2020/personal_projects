@@ -29,8 +29,8 @@ def change_background(img, new_background, replace_color):
 		for i in range(h_img):
 			for j in range(w_img):
 				threshold = color_distance(new_background[i][j], replace_color)
-				if color_distance(img[i][j], new_background[i][j]) - threshold > -180 and \
-				color_distance(img[i][j], new_background[i][j]) - threshold < -30:
+		       		input_distance = color_distance(img[i][j], new_background[i][j])
+				if input_distance - threshold > -180 and input_distance - threshold < -30:
 					img[i][j] = new_background[i][j]
 	return save(img, 'name of destination png file')
 
